@@ -1,0 +1,607 @@
+{% extends "bases/base.html" %}
+	{% load static %}
+		{% block content %}
+			<!-- big-slider-section
+				================================================== -->
+			<section class="big-slider">
+				<div class="container">
+					<div class="image-slider">
+						<ul class="big-bxslider">
+							{% for pro in produit %}
+							<li>
+								<div class="news-post image-post2">
+									<div class="post-gallery">
+										{% if pro.image %}
+											<img src="{{pro.image.url}}" alt="" style="height: 350px;" >
+										{% else %}
+											<img src="{% static 'upload/news-posts/big-slide1.jpg' %}" alt="" style="height: 50px; width: 80px;">
+
+										{% endif %}
+										<div class="hover-box">
+											<div class="inner-hover">
+												<a class="category-post food" href="{% url 'food_healt' %}">{{pro.categorie.titre}}</a>
+												<h2>{{pro.description}}</h2>
+												<ul class="post-tags">
+													<li><i class="fa fa-clock-o"></i>{{pro.date_add}}</li>
+													<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
+													
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							
+						</ul>
+					</div>
+				</div>
+			</section>
+			<!-- End big-slider-section -->
+
+			<!-- block-wrapper-section
+				================================================== -->
+			<section class="block-wrapper shadow-white">
+
+				<div class="list-line-posts">
+					<div class="container">
+
+						<div class="owl-wrapper">
+							<div class="owl-carousel " data-num="4">
+								{% for cat in categorie %}
+								<div class="item list-post">
+									{% if cat.image %}
+										<img src="{{cat.image.url}}" alt="" style="height: 80px; width: 75px;">
+									{% else %}
+										<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt="">
+									{% endif %}
+									<div class="post-content">
+										<a href="{% url 'food_healt' %}">{{cat.titre}}</a>
+										<h2><a href="#">{{cat.description}} </a></h2>
+										<ul class="post-tags">
+											<li><i class="fa fa-clock-o"></i>{{cat.date_add}}</li>
+										</ul>
+									</div>
+								</div>
+								{% endfor %}
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-9 col-sm-8">
+
+							<!-- block content -->
+							<div class="block-content">
+
+								<!-- grid box -->
+								<div class="grid-box">
+
+									<div class="news-post very-large-post">
+										{% for cat in post %}
+										<div class="title-post">
+											<a class="category-post world" href="{% url 'world' %}">{{cat.titre}}</a>
+											<h2><a >{{cat.description}}</a></h2>
+											<ul class="post-tags">
+												<li><i class="fa fa-clock-o"></i>{{cat.date_add}}</li>
+												<li><i class="fa fa-user"></i>by <a href="#">John Michel</a></li>
+												<li><a href="#"><i class="fa fa-comments-o"></i><span>65</span></a></li>
+												<li><i class="fa fa-eye"></i>900</li>
+											</ul>
+										</div>
+										<div class="post-gallery">
+											{% if cat.image %}
+												<img src="{{cat.image.url}}" alt="" style="height: 350px; width: 600px;">
+											{% else %}
+												<img src="{% static 'upload/news-posts/large5.jpg' %}" alt="">
+											{% endif %}
+										</div>
+										<div class="post-content">
+											<p>{{cat.details}}</p>
+											<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<div class="share-box">
+												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
+												<ul class="share-list-post">
+													<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+													<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+													<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+													<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+													<li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+													<li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+												</ul>
+											</div>
+										</div>
+										{% endfor %}
+									</div>
+
+
+									<div class="news-post very-large-post">
+										<div class="title-post">
+											<a class="category-post food" href="{% url 'food_healt' %}">Food &amp; Health</a>
+											<h2><a >Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus.</a></h2>
+											<ul class="post-tags">
+												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+												<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
+												<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+												<li><i class="fa fa-eye"></i>872</li>
+											</ul>
+										</div>
+										<div class="post-gallery">
+											<a class="zoom big-size" ><img src="{% static 'images/food2.jpg' %}" alt="" style="height: 300px;"></a>
+										</div>
+										<div class="post-content">
+											<p>Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+											<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+											<blockquote><p>Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis.</p></blockquote>
+											<div class="article-inpost">
+												<img src="{% static 'images/b1.jpg' %}" alt="">
+												<div class="right-content">
+													<p class="highlight">Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+													<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.<br> Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+												</div>
+											</div>
+											<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+											<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<div class="share-box">
+												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
+												<ul class="share-list-post">
+													<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+													<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+													<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+													<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+													<li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+													<li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<!-- End grid box -->
+
+								<!-- google addsense -->
+								<div class="advertisement">
+									<div class="desktop-advert">
+										<span>Advertisement</span>
+										<img src="{% static 'upload/addsense/600x80.jpg' %}" alt="">
+									</div>
+									<div class="tablet-advert">
+										<span>Advertisement</span>
+										<img src="{% static 'upload/addsense/468x60-white.jpg' %}" alt="">
+									</div>
+									<div class="mobile-advert">
+										<span>Advertisement</span>
+										<img src="{% static 'upload/addsense/300x250.jpg' %}" alt="">
+									</div>
+								</div>
+								<!-- End google addsense -->
+
+								<!-- grid box -->
+								<div class="grid-box">
+
+									<div class="news-post banner-quote-post">
+										<div class="quote">
+											<p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
+											<span><i class="fa fa-user"></i> by John Doe</span>
+										</div>
+									</div>
+
+									<div class="news-post very-large-post">
+										<div class="title-post">
+											<a class="category-post fashion" href="fashion.html">Fashion</a>
+											<h2><a href="single-post.html">Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</a></h2>
+											<ul class="post-tags">
+												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+												<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
+												<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+												<li><i class="fa fa-eye"></i>872</li>
+											</ul>
+										</div>
+										<div class="post-gallery">
+											<ul class="slider-call">
+												{% for img in produit %}
+													{% if img.image %}
+														<li><img src="{{img.image.url}}" alt="" style="height: 400px; width: 750px;"></li>
+													{% else %} 
+														<li><img src="{% static 'upload/news-posts/large1.jpg' %}" alt=""/></li>
+													{% endif %}
+												
+												<!-- <li><img src="{% static 'upload/news-posts/large2.jpg' %}" alt=""/></li>
+												<li><img src="{% static 'upload/news-posts/large4.jpg' %}" alt=""/></li>
+												<li><img src="{% static 'upload/news-posts/large3.jpg' %}" alt=""/></li> -->
+												{% endfor %}
+											</ul>
+											<!-- <div id="bx-pager">
+												<a data-slide-index="0" href=""><img src="{% static 'upload/news-posts/thumb1.jpg' %}" alt=""/></a>
+												<a data-slide-index="1" href=""><img src="{% static 'upload/news-posts/thumb2.jpg' %}" alt=""/></a>
+												<a data-slide-index="2" href=""><img src="{% static 'upload/news-posts/thumb3.jpg' %}" alt=""/></a>
+												<a data-slide-index="3" href=""><img src="{% static 'upload/news-posts/thumb4.jpg' %}" alt=""/></a>
+												<a data-slide-index="4" href=""><img src="{% static 'upload/news-posts/thumb5.jpg' %}" alt=""/></a>
+											</div> -->
+										</div>
+										<div class="post-content">
+											<p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. <br> Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor.</p>
+											<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<div class="share-box">
+												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
+												<ul class="share-list-post">
+													<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+													<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+													<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+													<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+													<li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+													<li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+
+									<div class="other-posts-box">
+										<div class="title-section">
+											<h1><span>You Might Also Like</span></h1>
+										</div>
+
+										<div class="row">
+											{% for sp in latest %}
+											<div class="col-md-4">
+												<div class="news-post standard-post2">
+													<div class="post-gallery">
+														{% if sp.image %}
+															<img src="{{sp.image.url}}" alt="" style="height: 80px; width: 100px;">
+														{% else %}
+															<img src="{% static 'upload/news-posts/art4.jpg' %}" alt="">
+														{% endif %}
+													</div>
+													<div class="post-title">
+														<h2><a href="single-post.html">{{sp.description}}</a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>{{sp.date_add}}</li>
+														</ul>
+													</div>
+												</div>
+											</div>	
+											{% endfor %}
+												
+										</div>
+									</div>
+
+									<div class="news-post very-large-post">
+										<div class="title-post">
+											<a class="category-post video" href="{% url 'video' %}">Video</a>
+											<a class="category-post travel" href="{% url 'travel' %}">travel</a>
+											<h2><a href="#">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</a></h2>
+											<ul class="post-tags">
+												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+												<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
+												<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+												<li><i class="fa fa-eye"></i>872</li>
+											</ul>
+										</div>
+										<div class="post-gallery">
+											<!-- Vimeo -->
+											<iframe class="videoembed" src="http://player.vimeo.com/video/118619069?title=0&amp;byline=0&amp;portrait=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+											<!-- End Vimeo -->
+										</div>
+										<div class="post-content">
+											<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+											<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<div class="share-box">
+												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
+												<ul class="share-list-post">
+													<li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
+													<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+													<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+													<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+													<li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+													<li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<!-- End grid box -->
+
+							</div>
+							<!-- End block content -->
+
+						</div>
+
+						<div class="col-md-3 col-sm-4">
+
+							<!-- sidebar -->
+							<div class="sidebar large-sidebar">
+
+								<div class="widget search-widget">
+									<form role="search" class="search-form">
+										<input type="text" id="search2" name="search" placeholder="Search here">
+										<button type="submit" id="search-submit2"><i class="fa fa-search"></i></button>
+									</form>
+								</div>
+
+								<div class="widget social-widget">
+									<div class="title-section">
+										<h1><span>Stay Connected</span></h1>
+									</div>
+									<ul class="social-share">
+										<li>
+											<a href="#" class="rss"><i class="fa fa-rss"></i></a>
+											<span class="number">9,455</span>
+											<span>Subscribers</span>
+										</li>
+										<li>
+											<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+											<span class="number">56,743</span>
+											<span>Fans</span>
+										</li>
+										<li>
+											<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+											<span class="number">43,501</span>
+											<span>Followers</span>
+										</li>
+										<li>
+											<a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+											<span class="number">35,003</span>
+											<span>Followers</span>
+										</li>
+									</ul>
+								</div>
+
+								<div class="widget features-slide-widget">
+									<div class="title-section">
+										<h1><span>Featured Posts</span></h1>
+									</div>
+									<div class="image-post-slider">
+										<ul class="bxslider">
+											<li>
+												<div class="news-post image-post2">
+													<div class="post-gallery">
+														<img src="{% static 'upload/news-posts/im3.jpg' %}" alt="">
+														<div class="hover-box">
+															<div class="inner-hover">
+																<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+																<ul class="post-tags">
+																	<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="news-post image-post2">
+													<div class="post-gallery">
+														<img src="{% static 'upload/news-posts/im1.jpg' %}" alt="">
+														<div class="hover-box">
+															<div class="inner-hover">
+																<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+																<ul class="post-tags">
+																	<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="news-post image-post2">
+													<div class="post-gallery">
+														<img src="{% static 'upload/news-posts/im2.jpg' %}" alt="">
+														<div class="hover-box">
+															<div class="inner-hover">
+																<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+																<ul class="post-tags">
+																	<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<ul class="list-posts">
+
+										<li>
+											<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt="">
+											<div class="post-content">
+												<h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
+												<ul class="post-tags">
+													<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<img src="{% static 'upload/news-posts/listw1.jpg' %}" alt="">
+											<div class="post-content">
+												<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+												<ul class="post-tags">
+													<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+												</ul>
+											</div>
+										</li>
+
+										<li>
+											<img src="{% static 'upload/news-posts/listw2.jpg' %}" alt="">
+											<div class="post-content">
+												<h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
+												<ul class="post-tags">
+													<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+
+								<div class="advertisement">
+									<div class="desktop-advert">
+										<span>Advertisement</span>
+										<img src="{% static 'upload/addsense/250x250.jpg' %}" alt="">
+									</div>
+									<div class="tablet-advert">
+										<span>Advertisement</span>
+										<img src="{% static 'upload/addsense/200x200.jpg' %}" alt="">
+									</div>
+									<div class="mobile-advert">
+										<span>Advertisement</span>
+										<img src="{% static 'upload/addsense/300x250.jpg' %}" alt="">
+									</div>
+								</div>
+
+								<div class="widget tab-posts-widget">
+
+									<ul class="nav nav-tabs" id="myTab">
+										<li class="active">
+											<a href="#option1" data-toggle="tab">Popular</a>
+										</li>
+										<li>
+											<a href="#option2" data-toggle="tab">Recent</a>
+										</li>
+									</ul>
+
+									<div class="tab-content">
+										<div class="tab-pane active" id="option1">
+											<ul class="list-posts">
+												<li>
+													<img src="{% static 'upload/news-posts/listw1.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+
+												<li>
+													<img src="{% static 'upload/news-posts/listw2.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Sed arcu. Cras consequat. </a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+
+												<li>
+													<img src="{% static 'upload/news-posts/listw3.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus.  </a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+
+												<li>
+													<img src="{% static 'upload/news-posts/listw4.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+
+												<li>
+													<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. </a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="tab-pane" id="option2">
+											<ul class="list-posts">
+
+												<li>
+													<img src="{% static 'upload/news-posts/listw3.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus. </a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+
+												<li>
+													<img src="{% static 'upload/news-posts/listw4.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+
+												<li>
+													<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+												<li>
+													<img src="{% static 'upload/news-posts/listw1.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+
+												<li>
+													<img src="{% static 'upload/news-posts/listw2.jpg' %}" alt="">
+													<div class="post-content">
+														<h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
+														<ul class="post-tags">
+															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+														</ul>
+													</div>
+												</li>
+											</ul>										
+										</div>
+									</div>
+								</div>
+
+								<div class="widget post-widget">
+									<div class="title-section">
+										<h1><span>Featured Video</span></h1>
+									</div>
+									<div class="news-post video-post">
+										<img alt="" src="{% static 'upload/news-posts/video-sidebar.jpg' %}">
+										<a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+										<div class="hover-box">
+											<h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>
+											<ul class="post-tags">
+												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
+											</ul>
+										</div>
+										<p></p>
+									</div>
+									<p>Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis. </p>
+								</div>
+
+							</div>
+							<!-- End sidebar -->
+
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+			<!-- End block-wrapper-section -->
+		{% endblock %}
