@@ -25,7 +25,7 @@ SECRET_KEY = 'vs8j_fcosb5&qmeyj#he17dm*dg6=jwijj(l%hwob*ntto)(%r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hot-magazine.herokuapp.com']
 
 
 # Application definition
@@ -78,9 +78,17 @@ WSGI_APPLICATION = 'projet.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd79e791judphvv',
+        'USER': 'caqbygyegbactc',
+        'PASSWORD': 'c4abe40796aec8f29b98e229f6e5d9fb3f55bdcfa42ace0a4b5e6c1807934fa2',
+        'HOST': 'ec2-54-247-78-30.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
