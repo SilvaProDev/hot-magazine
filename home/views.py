@@ -13,6 +13,11 @@ def index(request):
     
     return render(request, 'pages/index.html', context)
 
+def single_post(request):
+    # produits = Produit.objects.get(pk=id)
+    # context = {'produits':produits}
+    return render(request, 'pages/single-post.html')
+
 def world(request):
     return render(request, 'pages/news-category4.html')
 
@@ -36,3 +41,4 @@ def food_healt(request):
 
 def autor_list(request):
     return render(request, 'pages/autor-list.html')
+

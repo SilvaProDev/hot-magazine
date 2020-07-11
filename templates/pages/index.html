@@ -56,7 +56,7 @@
 										<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt="">
 									{% endif %}
 									<div class="post-content">
-										<a href="{% url 'food_healt' %}">{{cat.titre}}</a>
+										<a href="{% url 'single_post' %}">{{cat.titre}}</a>
 										<h2><a href="#">{{cat.description}} </a></h2>
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i>{{cat.date_add}}</li>
@@ -84,7 +84,7 @@
 									<div class="news-post very-large-post">
 										{% for cat in post %}
 										<div class="title-post">
-											<a class="category-post world" href="{% url 'world' %}">{{cat.titre}}</a>
+											<a class="category-post world" href="{% url 'single_post' %}">{{cat.titre}}</a>
 											<h2><a >{{cat.description}}</a></h2>
 											<ul class="post-tags">
 												<li><i class="fa fa-clock-o"></i>{{cat.date_add}}</li>
@@ -102,7 +102,7 @@
 										</div>
 										<div class="post-content">
 											<p>{{cat.details}}</p>
-											<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<a href="{% url 'single_post' %}" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
 											<div class="share-box">
 												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
 												<ul class="share-list-post">
@@ -145,7 +145,7 @@
 												</div>
 											</div>
 											<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-											<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<a href="{% url 'single_post' %}" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
 											<div class="share-box">
 												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
 												<ul class="share-list-post">
@@ -193,7 +193,7 @@
 									<div class="news-post very-large-post">
 										<div class="title-post">
 											<a class="category-post fashion" href="fashion.html">Fashion</a>
-											<h2><a href="single-post.html">Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</a></h2>
+											<h2><a href="{% url 'single_post' %}">Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</a></h2>
 											<ul class="post-tags">
 												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 												<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
@@ -225,7 +225,7 @@
 										</div>
 										<div class="post-content">
 											<p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. <br> Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor.</p>
-											<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<a href="{% url 'single_post' %}" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
 											<div class="share-box">
 												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
 												<ul class="share-list-post">
@@ -257,7 +257,7 @@
 														{% endif %}
 													</div>
 													<div class="post-title">
-														<h2><a href="single-post.html">{{sp.description}}</a></h2>
+														<h2><a href="{% url 'single_post' %}">{{sp.description}}</a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>{{sp.date_add}}</li>
 														</ul>
@@ -288,7 +288,7 @@
 										</div>
 										<div class="post-content">
 											<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-											<a href="single-post.html" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<a href="{% url 'single_post' %}" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
 											<div class="share-box">
 												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
 												<ul class="share-list-post">
@@ -363,7 +363,7 @@
 														<img src="{% static 'upload/news-posts/im3.jpg' %}" alt="">
 														<div class="hover-box">
 															<div class="inner-hover">
-																<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+																<h2><a href="{% url 'single_post' %}">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
 																<ul class="post-tags">
 																	<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
@@ -379,7 +379,7 @@
 														<img src="{% static 'upload/news-posts/im1.jpg' %}" alt="">
 														<div class="hover-box">
 															<div class="inner-hover">
-																<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+																<h2><a href="{% url 'single_post' %}">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
 																<ul class="post-tags">
 																	<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
@@ -395,7 +395,7 @@
 														<img src="{% static 'upload/news-posts/im2.jpg' %}" alt="">
 														<div class="hover-box">
 															<div class="inner-hover">
-																<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+																<h2><a href="{% url 'single_post' %}">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
 																<ul class="post-tags">
 																	<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 																	<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
@@ -412,7 +412,7 @@
 										<li>
 											<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt="">
 											<div class="post-content">
-												<h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
+												<h2><a href="{% url 'single_post' %}">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
 												<ul class="post-tags">
 													<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 												</ul>
@@ -421,7 +421,7 @@
 										<li>
 											<img src="{% static 'upload/news-posts/listw1.jpg' %}" alt="">
 											<div class="post-content">
-												<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+												<h2><a href="{% url 'single_post' %}">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
 												<ul class="post-tags">
 													<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 												</ul>
@@ -431,7 +431,7 @@
 										<li>
 											<img src="{% static 'upload/news-posts/listw2.jpg' %}" alt="">
 											<div class="post-content">
-												<h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
+												<h2><a href="{% url 'single_post' %}">Sed arcu. Cras consequat.</a></h2>
 												<ul class="post-tags">
 													<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 												</ul>
@@ -472,7 +472,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw1.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+														<h2><a href="{% url 'single_post' %}">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -482,7 +482,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw2.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Sed arcu. Cras consequat. </a></h2>
+														<h2><a href="{% url 'single_post' %}">Sed arcu. Cras consequat. </a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -492,7 +492,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw3.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus.  </a></h2>
+														<h2><a href="{% url 'single_post' %}">Phasellus ultrices nulla quis nibh. Quisque a lectus.  </a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -502,7 +502,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw4.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
+														<h2><a href="{% url 'single_post' %}">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -512,7 +512,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. </a></h2>
+														<h2><a href="{% url 'single_post' %}">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. </a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -526,7 +526,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw3.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus. </a></h2>
+														<h2><a href="{% url 'single_post' %}">Phasellus ultrices nulla quis nibh. Quisque a lectus. </a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -536,7 +536,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw4.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
+														<h2><a href="{% url 'single_post' %}">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -546,7 +546,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
+														<h2><a href="{% url 'single_post' %}">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -555,7 +555,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw1.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+														<h2><a href="{% url 'single_post' %}">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -565,7 +565,7 @@
 												<li>
 													<img src="{% static 'upload/news-posts/listw2.jpg' %}" alt="">
 													<div class="post-content">
-														<h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
+														<h2><a href="{% url 'single_post' %}">Sed arcu. Cras consequat.</a></h2>
 														<ul class="post-tags">
 															<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 														</ul>
@@ -584,7 +584,7 @@
 										<img alt="" src="{% static 'upload/news-posts/video-sidebar.jpg' %}">
 										<a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
 										<div class="hover-box">
-											<h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>
+											<h2><a href="{% url 'single_post' %}">Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>
 											<ul class="post-tags">
 												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 											</ul>

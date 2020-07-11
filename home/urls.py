@@ -13,4 +13,6 @@ urlpatterns = [
     path('sport', views.sport, name="sport"),
     path('food_healt', views.food_healt, name="food_healt"),
     path('autor_list', views.autor_list, name="autor_list"),
+
+    path('single_post', views.single_post, name="single_post"),
 ]
