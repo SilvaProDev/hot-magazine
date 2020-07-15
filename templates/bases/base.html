@@ -66,7 +66,7 @@
 									</li>
 									<li><span class="time-now">Thursday 8 January 2015 / 21:20</span></li>
 									<li><a href="#">Log In</a></li>
-									<li><a href="#">Contact</a></li>
+									<li><a href="  {% url 'contact' %} ">Contact</a></li>
 									<li><a href="#">Purchase Theme</a></li>
 								</ul>
 							</div>	
@@ -132,6 +132,10 @@
                                 <li class="drop"><a class="features" href="{% url 'autor_list' %}">Autor List</a></li>
 								
 							</ul>
+							<form class="navbar-form navbar-right" role="search">
+								<input type="text" id="search" name="search" placeholder="Search here">
+								<button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
+							</form>
 							
 						</div>
 						<!-- /.navbar-collapse -->

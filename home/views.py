@@ -13,6 +13,11 @@ def index(request):
     
     return render(request, 'pages/index.html', context)
 
+def contact_us(request):
+    
+    return render(request, 'pages/contact.html')
+
+
 def single_post(request):
     # produits = Produit.objects.get(pk=id)
     # context = {'produits':produits}
