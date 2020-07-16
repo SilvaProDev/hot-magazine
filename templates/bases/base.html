@@ -132,9 +132,10 @@
                                 <li class="drop"><a class="features" href="{% url 'autor_list' %}">Autor List</a></li>
 								
 							</ul>
-							<form class="navbar-form navbar-right" role="search">
-								<input type="text" id="search" name="search" placeholder="Search here">
-								<button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
+							<form class="navbar-form navbar-right" action=" {% url 'search' %} " method="post">
+								{% csrf_token %}
+								<input type="text" id="query" name="query" placeholder="Search by name" style="text-decoration: none; text-transform: lowercase;">
+								<button type="submit" ><i class="fa fa-search"></i></button>
 							</form>
 							
 						</div>

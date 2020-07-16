@@ -1,6 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth.models import User
+from django.contrib import messages
+
 from .models import Produit, Category
+from .forms import SignUpForm, SearchForm
 
 # Create your views here.
 def index(request):
@@ -16,6 +21,75 @@ def index(request):
 def contact_us(request):
     
     return render(request, 'pages/contact.html')
+
+def signup(request):
+    if request.method=='POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username= form.cleaned_data.get('username')
+            password = form.cleaned_data('password')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+
+            messages.success(request, 'Votre compte a été creer avec succes')
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, 'erreur de connection')
+            return HttpResponseRedirect('/contact_us')
+    else:
+        form = SignUpForm()
+    data = {form:'form'}
+    return render(request, 'pages/contact.html', data)
+
+def login_in(request):
+    if request.method=='POST':
+        
+        username = request.POST['username']
+        password = request.POSt['password']
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.succes(request, 'Vous etes bien conecté')
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, 'Erreur de connection')
+            return HttpResponseRedirect('/contact_us')
+
+    return render(request, 'pages/contact.html')
+
+def search(request):
+    if request.method=='POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+
+            if query:
+                produit = Produit.objects.filter(titre__icontains=query)
+
+                if produit:
+                    data = {'produit':produit, 'query':query}
+                    return render(request, 'pages/search.html', data)
+                else:
+                    messages.success(request, 'pas de produits correspondant ce nom')
+            else:
+                return HttpResponseRedirect('/search/')
+
+    return render(request, 'pages/search.html')
+           
+    
+
+
+            
+
+
+
+
+
+
+
+
 
 
 def single_post(request):

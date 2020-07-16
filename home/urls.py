@@ -1,5 +1,5 @@
 
-from django.urls import path, include
+from django.urls import path
 
 from . import views
 urlpatterns = [
@@ -16,4 +16,11 @@ urlpatterns = [
     path('autor_list', views.autor_list, name="autor_list"),
 
     path('single_post', views.single_post, name="single_post"),
+    # connexion inscription
+    path('signup', views.signup, name="signup"),
+    path('login', views.login_in, name="login"),
+    path('search', views.search, name="search"),
+
+
+
 ]
