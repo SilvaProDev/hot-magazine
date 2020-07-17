@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="fr" class="no-js">
 <head>
-	<title>HotMagazine- Accueil</title>
+	<title> {% block title %} HotMagazine- Accueil {% endblock %} </title>
 
 	<meta charset="utf-8">
 
@@ -65,8 +65,12 @@
 										<span class="cel-temperature">+7</span>
 									</li>
 									<li><span class="time-now">Thursday 8 January 2015 / 21:20</span></li>
-									<li><a href="#">Log In</a></li>
-									<li><a href="  {% url 'contact' %} ">Contact</a></li>
+									{% if user.id is not None%}
+									<li><a style="color: beige;"  class="text-uppercase" href="{% url 'my-account' %}">{{user.username}}</a>||||<a style="color: beige;" class="text-uppercase" href="{% url 'log-out' %}">logout</a></li>
+									{% else %}
+									<li><a style="color: rgb(252, 252, 48);" class="text-uppercase" href="{% url 'log_in' %}">log in</a>||||<a style="color: beige;" class="text-uppercase" href="{% url 'signup' %}">signUp</a></li>
+									{% endif %}
+									<li><a style="color: beige;" class="text-uppercase" href="{% url 'contact' %} ">Contact</a></li>
 									<li><a href="#">Purchase Theme</a></li>
 								</ul>
 							</div>	
@@ -134,7 +138,7 @@
 							</ul>
 							<form class="navbar-form navbar-right" action=" {% url 'search' %} " method="post">
 								{% csrf_token %}
-								<input type="text" id="query" name="query" placeholder="Search by name" style="text-decoration: none; text-transform: lowercase;">
+								<input type="text" id="query" name="query" placeholder="Search by name ..food, lifestyle" style="text-decoration: none; text-transform: lowercase;">
 								<button type="submit" ><i class="fa fa-search"></i></button>
 							</form>
 							

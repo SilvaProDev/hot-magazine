@@ -1,0 +1,51 @@
+{% extends "bases/base.html" %}
+	{% load static %}
+		{% block content %}
+			<!-- block-wrapper-section
+				================================================== -->
+			<section class="block-wrapper">
+				<div class="container">
+					<div class="row">
+
+							<!-- block content -->
+							<div class="block-content">
+									<!-- contact form box -->
+								<div class="contact-form-box">
+									
+									<div class="row">
+										<div class="col-md-8">
+											<div class="section-title">
+												<h3 class="title">Sign Up</h3>
+											</div>
+											<form action="" method="post">
+												{% csrf_token %}
+												
+												{% for field in form %}
+													<p>
+														{{field.label_tag}}
+														{{field}}
+														{% if field.help_text %}
+														<small style="..."> {{field.help_text}} </small>
+														{% endif %}
+														{% for error in field.errors %}
+															<p style="..."> {{error}} </p>
+														{% endfor %}
+
+													</p>
+													
+												{% endfor %}
+												<button type="submit">Singn Up</button>
+											</form>
+										</div>
+									</div>
+								</div>
+								<!-- End contact form box -->
+							</div>
+							<!-- End block content -->
+						
+					</div>
+
+				</div>
+			</section>
+			<!-- End block-wrapper-section -->
+		{% endblock %}

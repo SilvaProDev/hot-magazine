@@ -1,0 +1,75 @@
+{% extends "bases/base.html" %}
+	{% load static %}
+		{% block content %}
+			<!-- block-wrapper-section
+				================================================== -->
+			<section class="block-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+
+							<!-- block content -->
+							<div class="block-content">
+
+								<!-- contact info box -->
+								<div class="contact-info-box">
+									
+
+									<!-- contact form box -->
+								<div class="contact-form-box">
+									<div class="title-section">
+									</div>
+									<div class="row">
+										<div class="col-md-8">
+											<div class="title-section">
+												<h1><span>Log In</span></h1>
+											</div>
+											<form id="contact-form" method="post" >
+												{% csrf_token %}
+												<div class="form-group">
+													<input type="text" class="form-control" name="username" placeholder="Username" required>
+												</div>
+												<div class="form-group">
+													<input type="password" class="form-control" name="password" placeholder="Password" required>
+
+												</div>
+													
+												<input type="submit" value="envoyer">
+											</form>
+
+										</div>
+										<!-- <div class="col-md-6">
+											<div class="title-section">
+												<h1><span>SignUP In</span></h1>
+											</div>
+											<form id="contact-form"  method="post">
+												{% csrf_token %}
+												
+												{{form.as_p}}
+												
+												<input type="submit" value="Envoyer">
+											</form>
+
+										</div> -->
+									</div>
+									
+								</div>
+								<!-- End contact form box -->
+
+								</div>
+								<!-- End contact info box -->
+
+								
+
+							</div>
+							<!-- End block content -->
+
+						</div>
+
+						
+					</div>
+
+				</div>
+			</section>
+			<!-- End block-wrapper-section -->
+		{% endblock %}

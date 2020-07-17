@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 
-from .models import Produit, Category
-from .forms import SignUpForm, SearchForm
+from .models import Produit, Category, UserProfile, ContactMessage
+from .forms import SignupForm, SearchForm, ContactForm
 
 # Create your views here.
 def index(request):
@@ -18,46 +19,79 @@ def index(request):
     
     return render(request, 'pages/index.html', context)
 
+@csrf_exempt
 def contact_us(request):
-    
-    return render(request, 'pages/contact.html')
+    if request.method=='POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            data = ContactMessage()
+            data.name = form.cleaned_data['name']
+            data.email = form.cleaned_data['email']
+            data.message = form.cleaned_data['message']
+            data.save()
 
+            messages.success(request, 'Votre message a bien été envoyé, merci de nous avoir contacter')
+            return HttpResponseRedirect('/contact')
+    
+    form = ContactForm
+    
+    return render(request, 'pages/contact.html', {'form':form})
+
+def my_account(request):
+    current_user = request.user
+    profile = UserProfile.objects.get(user_id=current_user.id)
+
+    return render(request, 'pages/my-account.html', {'profile':profile})
+
+@csrf_exempt
 def signup(request):
     if request.method=='POST':
-        form = SignUpForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            username= form.cleaned_data.get('username')
-            password = form.cleaned_data('password')
+
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+
             user = authenticate(username=username, password=password)
             login(request, user)
 
-            messages.success(request, 'Votre compte a été creer avec succes')
+            messages.success(request, 'vous etes connecté')
             return HttpResponseRedirect('/')
         else:
-            messages.warning(request, 'erreur de connection')
-            return HttpResponseRedirect('/contact_us')
+            messages.warning(request, form.errors )
+            return HttpResponseRedirect('/signup')
     else:
-        form = SignUpForm()
-    data = {form:'form'}
-    return render(request, 'pages/contact.html', data)
+        form = SignupForm()
+    data = {'form':form}
+    return render(request, 'pages/signup.html', data)
 
+
+
+@csrf_exempt
 def login_in(request):
     if request.method=='POST':
         
         username = request.POST['username']
-        password = request.POSt['password']
+        password = request.POST['password']
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
-            messages.succes(request, 'Vous etes bien conecté')
+            # current_user = request.user
+            # userprofile = UserProfile.objects.get(user_id = current_user.id)
+            # request.session['userimage'] = userprofile.image.url
+            messages.success(request, 'Vous etes bien conecté')
             return HttpResponseRedirect('/')
         else:
             messages.warning(request, 'Erreur de connection')
-            return HttpResponseRedirect('/contact_us')
+            return HttpResponseRedirect('/log_in')
 
-    return render(request, 'pages/contact.html')
+    return render(request, 'pages/loginForm.html')
+
+def login_out(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 def search(request):
     if request.method=='POST':
@@ -72,7 +106,7 @@ def search(request):
                     data = {'produit':produit, 'query':query}
                     return render(request, 'pages/search.html', data)
                 else:
-                    messages.success(request, 'pas de produits correspondant ce nom')
+                    messages.success(request, 'Aucun Article ne correspond a ce nom ')
             else:
                 return HttpResponseRedirect('/search/')
 

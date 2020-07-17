@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -41,6 +42,34 @@ class Produit(models.Model):
 
     def __str__(self):
         return self.titre
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone= models.CharField(blank=True, max_length=20)
+    address = models.CharField(blank=True, max_length=100)
+    ville = models.CharField(blank=True, max_length=30)
+    image = models.ImageField(blank=True, upload_to="images/user")
+
+    def __str__(self):
+        return self.user.username
+
+    def user_name(self):
+        self.user.first_name+" "+ self.user.last_name+" ["+ self.user.username+ " ]"
+
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=50)
+    email= models.EmailField(max_length=200)
+    message = models.TextField()
+    noteadmin = models.CharField(max_length=250)
+    status = models.BooleanField(default=True)
+
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_mod = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
 		
     
 

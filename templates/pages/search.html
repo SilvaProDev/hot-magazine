@@ -23,6 +23,7 @@
 
                                         
                                         {% for pro in produit %}
+
                                         <tr>
                                             
                                             <td class="thumb">
@@ -36,15 +37,23 @@
                                             <td class="price text-center"><strong>{{pro.prix}}€</strong></td>
                                             <!-- <td class="qty text-center"><input class="input" type="number" value="1"></td> -->
                                             
+                                            
                                         </tr>
+                                       
                                             {%  empty %}
-                                            {% if messages %}
-                                                {% for message in messages %}
-                                                    <div class="alert-alert-{{message.tags}}" role="alert" style="color: rgb(15, 15, 14); font-size: 40px;">
-                                                        {{ message }}
-                                                    </div>
-                                                {% endfor %}
-                                            {% endif %}
+                                        <tr>
+                                            <td colspan="5">
+                                            
+                                                {% if messages %}
+                                                    {% for message in messages %}
+                                                        <div class="alert-alert-{{message.tags}}" role="alert" style="color: rgb(236, 236, 38); font-size: 30px;">
+                                                            {{ message }}
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                           
                                         {% endfor %}
 
                                        
