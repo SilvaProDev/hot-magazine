@@ -148,12 +148,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
-EMAIl_HOST='stmp.gmail.com'
-EMAIl_HOST_USER='magazine@gmail.com'
-EMAIl_HOST_PASSWORD='password'
-EMAIl_PORT=587
+EMAIL_HOST='stmp.gmail.com'
+EMAIL_HOST_USER='magazine@gmail.com'
+EMAIL_HOST_PASSWORD='password'
+EMAIL_PORT=587
 EMAIL_USE_TLS=True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
