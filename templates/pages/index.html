@@ -1,28 +1,34 @@
 {% extends "bases/base.html" %}
 	{% load static %}
+
+	{% block vueCdn %}
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	{% endblock %}
+
 		{% block content %}
 			<!-- big-slider-section
 				================================================== -->
-			<section class="big-slider">
+			<section class="big-slider" id="app">
 				<div class="container">
 					<div class="image-slider">
-						<ul class="big-bxslider">
-							{% for pro in produit %}
+						<ul class="big-bxslider" >
+							{% for art in produit %}
 							<li>
 								<div class="news-post image-post2">
 									<div class="post-gallery">
-										{% if pro.image %}
-											<img src="{{pro.image.url}}" alt="" style="height: 350px;" >
+										{% if art.image%}
+											<img src=" {{art.image.url}} " alt="" style="height: 350px;" >
 										{% else %}
 											<img src="{% static 'upload/news-posts/big-slide1.jpg' %}" alt="" style="height: 50px; width: 80px;">
 
 										{% endif %}
 										<div class="hover-box">
 											<div class="inner-hover">
-												<a class="category-post food" href="{% url 'food_healt' %}">{{pro.categorie.titre}}</a>
-												<h2>{{pro.description}}</h2>
+												<a class="category-post food" href="">{{art.categorie.titre}}</a>
+												<h2>{{art.description}}</h2>
 												<ul class="post-tags">
-													<li><i class="fa fa-clock-o"></i>{{pro.date_add}}</li>
+													<li><i class="fa fa-clock-o"></i>{{art.date_add}}</li>
 													<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
 													
 												</ul>
@@ -32,6 +38,7 @@
 								</div>
 							</li>
 							{% endfor %}
+							
 							
 						</ul>
 					</div>
@@ -45,18 +52,20 @@
 
 				<div class="list-line-posts">
 					<div class="container">
-
-						<div class="owl-wrapper">
+						
+						<div class="owl-wrapper" >
 							<div class="owl-carousel " data-num="4">
 								{% for cat in categorie %}
 								<div class="item list-post">
-									{% if cat.image %}
-										<img src="{{cat.image.url}}" alt="" style="height: 80px; width: 75px;">
+									
+									{% if cat.image%}
+									<img src=" {{cat.image.url}} " alt="" style="height: 180px; " >
 									{% else %}
-										<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt="">
+										<img src="{% static 'upload/news-posts/listw5.jpg' %}" alt=""> 
 									{% endif %}
+									
 									<div class="post-content">
-										<a href="{% url 'single_post' %}">{{cat.titre}}</a>
+										<a  href="{% url 'single_post' %}" >{{cat.titre}}</a>
 										<h2><a href="#">{{cat.description}} </a></h2>
 										<ul class="post-tags">
 											<li><i class="fa fa-clock-o"></i>{{cat.date_add}}</li>
@@ -67,7 +76,7 @@
 
 							</div>
 						</div>
-
+						
 					</div>
 				</div>
 
@@ -81,7 +90,7 @@
 								<!-- grid box -->
 								<div class="grid-box">
 
-									<div class="news-post very-large-post">
+									<div class="news-post very-large-post" >
 										{% for cat in post %}
 										<div class="title-post">
 											<a class="category-post world" href="{% url 'single_post' %}">{{cat.titre}}</a>
@@ -121,7 +130,7 @@
 
 									<div class="news-post very-large-post">
 										<div class="title-post">
-											<a class="category-post food" href="{% url 'food_healt' %}">Food &amp; Health</a>
+											<!-- <a class="category-post food" href="{% url 'food_healt' %}">Food &amp; Health</a> -->
 											<h2><a >Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus.</a></h2>
 											<ul class="post-tags">
 												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
@@ -131,21 +140,21 @@
 											</ul>
 										</div>
 										<div class="post-gallery">
-											<a class="zoom big-size" ><img src="{% static 'images/food2.jpg' %}" alt="" style="height: 300px;"></a>
+											<!-- <a class="zoom big-size" ><img src="{% static 'images/food2.jpg' %}" alt="" style="height: 300px;"></a> -->
 										</div>
 										<div class="post-content">
 											<p>Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
 											<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
 											<blockquote><p>Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis.</p></blockquote>
 											<div class="article-inpost">
-												<img src="{% static 'images/b1.jpg' %}" alt="">
+												<!-- <img src="{% static 'images/b1.jpg' %}" alt=""> -->
 												<div class="right-content">
 													<p class="highlight">Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
 													<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.<br> Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
 												</div>
 											</div>
 											<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-											<a href="{% url 'single_post' %}" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<!-- <a href="{% url 'single_post' %}" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a> -->
 											<div class="share-box">
 												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
 												<ul class="share-list-post">
@@ -167,15 +176,15 @@
 								<div class="advertisement">
 									<div class="desktop-advert">
 										<span>Advertisement</span>
-										<img src="{% static 'upload/addsense/600x80.jpg' %}" alt="">
+										<!-- <img src="{% static 'upload/addsense/600x80.jpg' %}" alt=""> -->
 									</div>
 									<div class="tablet-advert">
 										<span>Advertisement</span>
-										<img src="{% static 'upload/addsense/468x60-white.jpg' %}" alt="">
+										<!-- <img src="{% static 'upload/addsense/468x60-white.jpg' %}" alt=""> -->
 									</div>
 									<div class="mobile-advert">
 										<span>Advertisement</span>
-										<img src="{% static 'upload/addsense/300x250.jpg' %}" alt="">
+										<!-- <img src="{% static 'upload/addsense/300x250.jpg' %}" alt=""> -->
 									</div>
 								</div>
 								<!-- End google addsense -->
@@ -193,7 +202,7 @@
 									<div class="news-post very-large-post">
 										<div class="title-post">
 											<a class="category-post fashion" href="fashion.html">Fashion</a>
-											<h2><a href="{% url 'single_post' %}">Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</a></h2>
+											<!-- <h2><a href="{% url 'single_post' %}">Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</a></h2> -->
 											<ul class="post-tags">
 												<li><i class="fa fa-clock-o"></i>27 may 2013</li>
 												<li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
@@ -203,17 +212,17 @@
 										</div>
 										<div class="post-gallery">
 											<ul class="slider-call">
-												{% for img in produit %}
+												<!-- {% for img in produit %}
 													{% if img.image %}
 														<li><img src="{{img.image.url}}" alt="" style="height: 400px; width: 750px;"></li>
 													{% else %} 
 														<li><img src="{% static 'upload/news-posts/large1.jpg' %}" alt=""/></li>
 													{% endif %}
 												
-												<!-- <li><img src="{% static 'upload/news-posts/large2.jpg' %}" alt=""/></li>
+												 <li><img src="{% static 'upload/news-posts/large2.jpg' %}" alt=""/></li>
 												<li><img src="{% static 'upload/news-posts/large4.jpg' %}" alt=""/></li>
 												<li><img src="{% static 'upload/news-posts/large3.jpg' %}" alt=""/></li> -->
-												{% endfor %}
+												<!-- {% endfor %} -->
 											</ul>
 											<!-- <div id="bx-pager">
 												<a data-slide-index="0" href=""><img src="{% static 'upload/news-posts/thumb1.jpg' %}" alt=""/></a>
@@ -225,7 +234,7 @@
 										</div>
 										<div class="post-content">
 											<p>Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. <br> Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor.</p>
-											<a href="{% url 'single_post' %}" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<a href="" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
 											<div class="share-box">
 												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
 												<ul class="share-list-post">
@@ -245,7 +254,7 @@
 											<h1><span>You Might Also Like</span></h1>
 										</div>
 
-										<div class="row">
+										<!-- <div class="row" >
 											{% for sp in latest %}
 											<div class="col-md-4">
 												<div class="news-post standard-post2">
@@ -266,11 +275,11 @@
 											</div>	
 											{% endfor %}
 												
-										</div>
+										</div> -->
 									</div>
 
 									<div class="news-post very-large-post">
-										<div class="title-post">
+										<!-- <div class="title-post">
 											<a class="category-post video" href="{% url 'video' %}">Video</a>
 											<a class="category-post travel" href="{% url 'travel' %}">travel</a>
 											<h2><a href="#">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</a></h2>
@@ -280,7 +289,7 @@
 												<li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
 												<li><i class="fa fa-eye"></i>872</li>
 											</ul>
-										</div>
+										</div> -->
 										<div class="post-gallery">
 											<!-- Vimeo -->
 											<iframe class="videoembed" src="http://player.vimeo.com/video/118619069?title=0&amp;byline=0&amp;portrait=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
@@ -288,7 +297,7 @@
 										</div>
 										<div class="post-content">
 											<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-											<a href="{% url 'single_post' %}" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a>
+											<!-- <a href="{% url 'single_post' %}" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</a> -->
 											<div class="share-box">
 												<a class="likes" href="#"><i class="fa fa-heart-o"></i> <span>0</span></a>
 												<ul class="share-list-post">
@@ -604,4 +613,31 @@
 				</div>
 			</section>
 			<!-- End block-wrapper-section -->
+		{% endblock %}
+		
+		{% block vue %}
+			<script>
+
+				app= new Vue({
+					el:'#app',
+					data: {
+						articles:[],
+						base_url: window.location.protocol + "//" + window.location.host
+					},
+					delimiters: [" ${", "} "],
+					mounted(){
+						this.getArticles()
+					},
+					methods: {
+						getArticles: function(){
+							axios
+							.get(this.base_url + "/api/Produit/?format=json")
+							.then(response => (this.articles = response.data))
+
+						}
+
+					},
+
+				})
+			</script>
 		{% endblock %}

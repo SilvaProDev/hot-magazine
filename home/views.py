@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+
+from django.core.mail import send_mail
+from django.conf import settings
 
 from .models import Produit, Category, UserProfile, ContactMessage
 from .forms import SignupForm, SearchForm, ContactForm
@@ -30,6 +33,14 @@ def contact_us(request):
             data.message = form.cleaned_data['message']
             data.save()
 
+            subject="Test de mail"
+            from_email= settings.EMAIL_HOST_USER
+            to_email= [data.email]
+            message_body="""Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat 
+            ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam 
+            porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod 
+            in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat."""
+            send_mail(subject=subject, from_email=from_email, recipient_list=to_email, message=message_body, fail_silently=False)
             messages.success(request, 'Votre message a bien été envoyé, merci de nous avoir contacter')
             return HttpResponseRedirect('/contact')
     
@@ -113,8 +124,18 @@ def search(request):
     return render(request, 'pages/search.html')
            
     
-
-
+def first_api(request):
+    a = Produit.objects.filter(status=True)
+    data={
+        'message':'ca marche',
+        'articles': [{
+            'id': i.id,
+            'titre': i.titre,
+            'slug': i.slug,
+            'image': i.image.url,
+        } for i in a]
+    }
+    return JsonResponse( data, safe=False)
             
 
 

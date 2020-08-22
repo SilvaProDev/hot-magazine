@@ -25,7 +25,8 @@ SECRET_KEY = 'vs8j_fcosb5&qmeyj#he17dm*dg6=jwijj(l%hwob*ntto)(%r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hot-magazine.herokuapp.com']
+#ALLOWED_HOSTS = ['hot-magazine.herokuapp.com']
+ALLOWED_HOSTS = ['localhost']
 
 
 
@@ -41,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'home.apps.HomeConfig',
+    'apiApp.apps.ApiappConfig',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +148,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
+EMAIl_HOST='stmp.gmail.com'
+EMAIl_HOST_USER='magazine@gmail.com'
+EMAIl_HOST_PASSWORD='password'
+EMAIl_PORT=587
+EMAIL_USE_TLS=True

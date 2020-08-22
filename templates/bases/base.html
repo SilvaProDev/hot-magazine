@@ -22,6 +22,10 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/ticker-style.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen">
 
+	{% block vueCdn %}
+	
+	{% endblock %}
+
 </head>
 <body>
 
@@ -319,6 +323,10 @@
 	<script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/retina-1.1.0.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+	
+	{% block vue %}
+
+	{% endblock %}
 
 </body>
 </html>

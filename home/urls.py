@@ -1,5 +1,14 @@
 
-from django.urls import path
+from django.urls import path, include
+
+# from .apiApp.apiviews import *
+# from rest_framework.routers import DefaultRouter
+
+# router = DefaultRouter()
+
+# router.register('categorie', CategoryViewset)
+# router.register('Produit', ProduitViewset)
+# router.register('ContactMessage', ContactMessageViewset)
 
 from . import views
 urlpatterns = [
@@ -19,10 +28,9 @@ urlpatterns = [
     # Page de contact
     path('my-account', views.my_account, name="my-account"),
 
-
-
-
-
+    #api url
+    path('fa', views.first_api, name="fa"),
+    
 
     path('world', views.world, name="world"),
     path('travel', views.travel, name="travel"),
@@ -35,7 +43,5 @@ urlpatterns = [
 
     path('single_post', views.single_post, name="single_post"),
     
-
-
 
 ]

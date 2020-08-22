@@ -24,7 +24,7 @@ class Category(models.Model):
 
 
 class Produit(models.Model):
-    categorie = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
+    categorie = models.ForeignKey(Category, related_name="produits", on_delete=models.CASCADE, blank=True, null=True)
     titre = models.CharField(max_length=150, blank=True)
     description = models.CharField(max_length=200, blank=True)
     image = models.ImageField(upload_to='produit/images', blank=True)
