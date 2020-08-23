@@ -149,8 +149,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
 EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='magazine@gmail.com'
-EMAIL_HOST_PASSWORD='password'
+EMAIL_HOST_USER='ouattara.daouda4613@gmail.com'
+EMAIL_HOST_PASSWORD='DAv461@@'
 EMAIL_PORT=587 or 465
 EMAIL_USE_TLS=True
 # ACCOUNT_EMAIL_VERIFICATION = 'none'
