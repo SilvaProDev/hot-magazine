@@ -148,10 +148,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 
-EMAIL_HOST='stmp.gmail.com'
+EMAIL_HOST='smtp.gmail.com'
 EMAIL_HOST_USER='magazine@gmail.com'
 EMAIL_HOST_PASSWORD='password'
-EMAIL_PORT=587
+EMAIL_PORT=587 or 465
 EMAIL_USE_TLS=True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 # ACCOUNT_ACTIVATION_DAYS = 1
